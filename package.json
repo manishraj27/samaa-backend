@@ -19,7 +19,9 @@
     "joi": "^17.4.2",
     "joi-password-complexity": "^5.1.0",
     "jsonwebtoken": "^8.5.1",
+    "moment-timezone": "^0.5.45",
     "mongoose": "^6.0.2",
+    "nodemailer": "^6.9.13",
     "nodemon": "2.0.12"
   }
 }

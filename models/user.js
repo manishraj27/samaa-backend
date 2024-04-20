@@ -2,6 +2,7 @@ const mongoose = require("mongoose");
 const jwt = require("jsonwebtoken");
 const Joi = require("joi");
 const passwordComplexity = require("joi-password-complexity");
+const moment = require('moment-timezone');
 
 const userSchema = new mongoose.Schema({
 	name: { type: String, required: true },
@@ -11,6 +12,8 @@ const userSchema = new mongoose.Schema({
 	likedSongs: { type: [String], default: [] },
 	playlists: { type: [String], default: [] },
 	isAdmin: { type: Boolean, default: false },
+	createdAt: { type: String, default: () => moment().tz('Asia/Kolkata').format('DD-MM-YYYY HH:mm:ss A') },
+	verified: { type: Boolean, default: false },
 });
 
 userSchema.methods.generateAuthToken = function () {
