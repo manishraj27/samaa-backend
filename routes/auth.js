@@ -46,7 +46,7 @@ router.post("/", async (req, res) => {
 
 			const authToken = user.generateAuthToken(); // Renamed 'token' to 'authToken'
 			
-			return res.status(200).send({ data: authToken, message: "Logged in successfully" }); // Renamed 'token' to 'authToken'
+			return res.status(200).send({ data: user, authToken, message: "Logged in successfully" }); // Renamed 'token' to 'authToken'
 		} else {
 		
 			return res.status(400).send({ message: "Email and password are required" });
