@@ -12,9 +12,7 @@ const tokenSchema = new Schema({
 	token: { type: String, required: true },
 	createdAt: 
 	{ 
-		type: String,
-		default: () => moment().tz('Asia/Kolkata').format(), //'DD-MM-YYYY HH:mm:ss A' inside format if you want 
-		expires: 3600 
+		type: Date, default: Date.now, expires: 3600
 	},
 });
 

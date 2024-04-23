@@ -4,10 +4,9 @@ const bcrypt = require("bcrypt"); // for password hashing
 const admin = require("../middleware/admin");
 const auth = require("../middleware/auth");
 const validateObjectId = require("../middleware/validateObjectId");
-const verifiedtoken = require("../models/token");
 const sendEmail = require("../utils/sendEmail");
 const crypto = require("crypto");
-const 	Token = require("../models/token");
+const Token = require("../models/token");
 
 // create user
 router.post("/", async (req, res) => {
@@ -36,7 +35,7 @@ router.post("/", async (req, res) => {
 		Hey ${newUser.name}!,
 		Welcome to Samaa Music Platform!
 		Click on the link to verify your account at Samaa.
-		Link: http://localhost:3001/users/${newUser.id}/verify/${vrefToken.token}`;
+		Link: http://localhost:3000/users/${newUser.id}/verify/${vrefToken.token}`;
 		await sendEmail(newUser.email, "Verify your account", url);
 	
 		res 

@@ -7,12 +7,18 @@ const validateObjectId = require("../middleware/validateObjectId");
 
 // Create song
 router.post("/", admin, async (req, res) => {
-	const { error } = validate(req.body);
-	if (error) res.status(400).send({ message: error.details[0].message });
+    try {
+        const { error } = validate(req.body); 
+        if (error) return res.status(400).send({ message: error.details[0].message });
 
-	const song = await Song(req.body).save();
-	res.status(201).send({ data: song, message: "Song created successfully" });
+        const song = await new Song(req.body).save(); 
+        res.status(201).send({ data: song, message: "Song created successfully" });
+    } catch (error) {
+        console.error("Error creating song:", error);
+        res.status(500).send({ message: "Internal Server Error" });
+    }
 });
+
 
 // Get all songs
 router.get("/", async (req, res) => {
