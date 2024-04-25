@@ -94,6 +94,16 @@ router.get("/favourite", auth, async (req, res) => {
 	res.status(200).send({ data: playlists });
 });
 
+router.get("/user-playlists", auth, async (req, res) => {
+	try {
+	  const user = await User.findById(req.user._id);
+	  const playlists = await PlayList.find({ user: user._id });
+	  res.status(200).send({ data: playlists });
+	} catch (error) {
+	  res.status(500).send({ message: "Failed to fetch user playlists" });
+	}
+  });
+  
 // get random playlists
 router.get("/random", auth, async (req, res) => {
 	const playlists = await PlayList.aggregate([{ $sample: { size: 10 } }]);

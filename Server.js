@@ -28,7 +28,7 @@ app.use("/api/users/", userRoutes);
 app.use("/api/login/", authRoutes);
 app.use("/api/songs/", songRoutes);
 app.use("/api/playlists/", playListRoutes);
-app.use("/api/", searchRoutes);
+app.use("/api/search/", searchRoutes);
 
 const port=3001
 app.listen(port,()=>{

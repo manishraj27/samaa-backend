@@ -40,6 +40,19 @@ router.delete("/:id", [validateObjectId, admin], async (req, res) => {
 	res.status(200).send({ message: "Song deleted sucessfully" });
 });
 
+// Get song by ID
+router.get("/:id",[validateObjectId, auth], async (req, res) => {
+    try {
+        const song = await Song.findById(req.params.id);
+        if (!song) return res.status(404).send({ message: "Song not found" });
+
+        res.status(200).send({ data: song });
+    } catch (error) {
+        console.error("Error fetching song:", error);
+        res.status(500).send({ message: "Internal Server Error" });
+    }
+});
+
 // Like song
 router.put("/like/:id", [validateObjectId, auth], async (req, res) => {
 	let resMessage = "";
@@ -59,6 +72,7 @@ router.put("/like/:id", [validateObjectId, auth], async (req, res) => {
 	await user.save();
 	res.status(200).send({ message: resMessage });
 });
+
 
 // Get liked songs
 router.get("/like", auth, async (req, res) => {

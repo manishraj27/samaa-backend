@@ -7,13 +7,13 @@ const playListSchema = new mongoose.Schema({
 	name: { type: String, required: true },
 	user: { type: ObjectId, ref: "user", required: true },
 	desc: { type: String },
-	songs: { type: Array, default: [] },
+	songs: { type: Array, default: [null] },
 	img: { type: String },
 });
 
 const validate = (playList) => {
 	const schema = Joi.object({
-		name: Joi.string().required(),
+		name: Joi.string().required().allow(""),
 		user: Joi.string().required(),
 		desc: Joi.string().allow(""),
 		songs: Joi.array().items(Joi.string()),
