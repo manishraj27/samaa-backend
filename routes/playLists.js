@@ -104,6 +104,7 @@ router.get("/user-playlists", auth, async (req, res) => {
 	}
   });
   
+  
 // get random playlists
 router.get("/random", auth, async (req, res) => {
 	const playlists = await PlayList.aggregate([{ $sample: { size: 10 } }]);

@@ -104,4 +104,6 @@ router.delete("/:id", [validateObjectId, admin], async (req, res) => {
 	res.status(200).send({ message: "Successfully deleted user." });
 });
 
+
+
 module.exports = router;

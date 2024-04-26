@@ -73,12 +73,24 @@ router.put("/like/:id", [validateObjectId, auth], async (req, res) => {
 	res.status(200).send({ message: resMessage });
 });
 
+// Get liked songs by user ID
+router.get("/like/:userId", async (req, res) => {
+    try {
+        const userId = req.params.userId;
 
-// Get liked songs
-router.get("/like", auth, async (req, res) => {
-	const user = await User.findById(req.user._id);
-	const songs = await Song.find({ _id: user.likedSongs });
-	res.status(200).send({ data: songs });
+        const user = await User.findById(userId);
+        if (!user) {
+            return res.status(404).send({ message: "User not found." });
+        }
+
+        const songs = await Song.find({ _id: { $in: user.likedSongs } });
+
+        res.status(200).send({ data: songs });
+    } catch (error) {
+        console.error("Error fetching liked songs:", error);
+        res.status(500).send({ message: "Internal server error." });
+    }
 });
+
 
 module.exports = router;
