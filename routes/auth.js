@@ -41,7 +41,7 @@ router.post("/", async (req, res) => {
 					await sendEmail(user.email, "Verify your account", url); // Using sendEmail function
 
 				}
-				return res.status(400).send({ message: "An Email sent to your account please verify." });
+				return res.status(400).send({ message: "An email already sent to your account. Please Verify to vibe with us. Check in Spams." });
 			}
 
 			const authToken = user.generateAuthToken(); // Renamed 'token' to 'authToken'

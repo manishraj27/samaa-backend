@@ -40,7 +40,7 @@ router.post("/", async (req, res) => {
 	
 		res 
 			.status(201)
-			.send({ message: "An email sent to your account please verify"});
+			.send({ message: "An email sent to your account. Please Verify to vibe with us. Check in Spams."});
 	
 	} catch (error) {
 	console.log(error);

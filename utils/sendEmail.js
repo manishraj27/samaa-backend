@@ -1,4 +1,5 @@
 const nodemailer = require('nodemailer');
+dotenv = require("dotenv").config();
 
 module.exports = async (email, subject, text) => {
     try {
@@ -8,13 +9,13 @@ module.exports = async (email, subject, text) => {
             port: 587,
             secure: false,
             auth: {
-                user: 'samaavibes@gmail.com',
-                pass: 'aqfn syja obna qnhx'
+                user: 'process.env.SMTP_USER',
+                pass: 'process.env.SMTP_PASS'
             }
         });
 
         const mailOptions = {
-            from: 'samaavibes@gmail.com',
+            from: 'process.env.SMTP_USER',
             to: email,
             subject: subject,
             text: text

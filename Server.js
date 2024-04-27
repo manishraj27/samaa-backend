@@ -2,11 +2,12 @@ const mongoose = require("mongoose")
 mongoose.set('strictQuery', true);
 const express = require("express");
 const cors = require("cors");
+dotenv = require("dotenv").config();
 
 const app = express();
 
 
-const dburl = "mongodb://localhost:27017/sdpprojectsamaa14"
+const dburl = process.env.DB_URL
 mongoose.connect(dburl).then(() => {
     console.log("Connected to DB Successfully")
 }).catch((err) => {
@@ -30,7 +31,7 @@ app.use("/api/songs/", songRoutes);
 app.use("/api/playlists/", playListRoutes);
 app.use("/api/search/", searchRoutes);
 
-const port=3001
+const port= process.env.PORT || 3001;
 app.listen(port,()=>{
     console.log(`Server is running at port http://localhost:${port}`)
 })

@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const Joi = require("joi");
 const passwordComplexity = require("joi-password-complexity");
 const moment = require('moment-timezone');
+dotenv = require("dotenv").config();
 
 const userSchema = new mongoose.Schema({
 	name: { type: String, required: true },
@@ -19,7 +20,7 @@ const userSchema = new mongoose.Schema({
 userSchema.methods.generateAuthToken = function () {
 	const token = jwt.sign(
 		{ _id: this._id, name: this.name, isAdmin: this.isAdmin },
-		"mysecret_key",
+		process.env.JWT_SECRET,
 		{ expiresIn: "7d" }
 	);
 	return token;
