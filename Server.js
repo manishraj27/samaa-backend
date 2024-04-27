@@ -31,7 +31,7 @@ app.use("/api/songs/", songRoutes);
 app.use("/api/playlists/", playListRoutes);
 app.use("/api/search/", searchRoutes);
 
-const port= process.env.PORT || 3001;
+const port= process.env.PORT;
 app.listen(port,()=>{
     console.log(`Server is running at port http://localhost:${port}`)
 })
