@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
 		Hey ${newUser.name}!,
 		Welcome to Samaa Music Platform!
 		Click on the link to verify your account at Samaa.
-		Link: http://localhost:3000/users/${newUser.id}/verify/${vrefToken.token}`;
+		Link: https://samaavibes.netlify.app/users/${newUser.id}/verify/${vrefToken.token}`;
 		await sendEmail(newUser.email, "Verify your account", url);
 	
 		res 
