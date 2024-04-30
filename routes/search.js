@@ -15,4 +15,6 @@ router.get("/", auth, async (req, res) => {
 	}
 });
 
+//GitHub: https://github.com/manishraj27
+
 module.exports = router;

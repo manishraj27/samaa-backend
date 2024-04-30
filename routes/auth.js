@@ -2,9 +2,9 @@ const router = require("express").Router();
 const { User, validate } = require("../models/user");
 const bcrypt = require("bcrypt"); 
 const Joi = require("joi"); 
-const tokenModel = require("../models/token"); // Renamed to avoid conflict with 'token' variable
-const sendEmail = require("../utils/sendEmail"); // Import sendEmail function
-const crypto = require("crypto"); // Import crypto module
+const tokenModel = require("../models/token"); 
+const sendEmail = require("../utils/sendEmail"); 
+const crypto = require("crypto"); 
 
 // POST route for user login 
 router.post("/", async (req, res) => {
@@ -27,7 +27,7 @@ router.post("/", async (req, res) => {
 			if (!validPassword)
 				return res.status(401).send({ message: "Invalid Email or Password" });
 			if(!user.verified){
-				let verefToken = await tokenModel.findOne({userId:user._id}); // Changed to 'tokenModel' to avoid conflict
+				let verefToken = await tokenModel.findOne({userId:user._id}); 
 				if (!verefToken	){
 					verefToken = await new tokenModel({
 						userId: user._id,
@@ -37,16 +37,16 @@ router.post("/", async (req, res) => {
 					Hey ${user.name}!,
 					Welcome to Samaa Music Platform!
 					Click on the link to verify your account at Samaa.
-					Link: https://samaa-frontend.vercel.app/users/${user.id}/verify/${verefToken.token}`; // Corrected variable name 'vrefToken' to 'verefToken'
-					await sendEmail(user.email, "Verify your account", url); // Using sendEmail function
+					Link: https://samaa-frontend.vercel.app/users/${user.id}/verify/${verefToken.token}`; 
+					await sendEmail(user.email, "Verify your account", url);
 
 				}
 				return res.status(400).send({ message: "An email already sent to your account. Please Verify to vibe with us. Check in Spams." });
 			}
 
-			const authToken = user.generateAuthToken(); // Renamed 'token' to 'authToken'
+			const authToken = user.generateAuthToken(); 
 			
-			return res.status(200).send({ data: user, authToken, message: "Logged in successfully" }); // Renamed 'token' to 'authToken'
+			return res.status(200).send({ data: user, authToken, message: "Logged in successfully" }); 
 		} else {
 		
 			return res.status(400).send({ message: "Email and password are required" });
@@ -56,6 +56,8 @@ router.post("/", async (req, res) => {
 		return res.status(500).send({ message: "Internal Server Error" });
 	}
 });
+
+//GitHub: https://github.com/manishraj27
 
 // Validate function for validating email and password
 const datavalidate = (data) => {
