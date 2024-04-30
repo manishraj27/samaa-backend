@@ -37,7 +37,7 @@ router.post("/", async (req, res) => {
 					Hey ${user.name}!,
 					Welcome to Samaa Music Platform!
 					Click on the link to verify your account at Samaa.
-					Link: https://samaa-frontend.vercel.app/users/${user.id}/verify/${verefToken.token}`; 
+					Link: https://samavibes.vercel.app/users/${user.id}/verify/${verefToken.token}`; 
 					await sendEmail(user.email, "Verify your account", url);
 
 				}
