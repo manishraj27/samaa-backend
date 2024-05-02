@@ -2,6 +2,10 @@
 
 Welcome to the documentation for the Samaa Music Streaming App API. This API provides various endpoints to manage users, songs, playlists, and authentication for the Samaa Music Streaming App.
 
+## Postman API Documentation
+
+For detailed documentation on how to use the Samaa Music Streaming App API, please visit the [Postman API Documentation](https://documenter.getpostman.com/view/33103855/2sA3BkcYVP).
+
 ## Getting Started
 
 To get started with the API, please follow the instructions below:
@@ -58,10 +62,14 @@ We welcome contributions from the community to enhance and improve the Samaa Mus
 
 ## License
 
-This project is licensed under the MIT License - see the MIT License file for details.
+This project is licensed under the MIT License - see the [LICENSE](https://github.com/manishraj27/samaa-backend/blob/main/LICENSE) file for details.
 
 ## Acknowledgements
 
 We would like to acknowledge the contributions of all developers and contributors who have helped to build and maintain the Samaa Music Streaming App API.
 
 Thank you for using the Samaa Music Streaming App API! Enjoy streaming your favorite music! 🎶🎧
+
+## Frontend Repository
+
+The frontend of the Samaa Music Streaming App is available on GitHub at [samaa-frontend](https://github.com/manishraj27/samaa-frontend). You can check it out to see how the API is integrated into the application.
