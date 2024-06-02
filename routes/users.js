@@ -32,10 +32,13 @@ router.post("/", async (req, res) => {
 			token: crypto.randomBytes(32).toString("hex"),
 		}).save();
 		const url = `
-		Hey ${newUser.name}!,
+		Hey ${newUser.name}!
 		Welcome to Samaa Music Platform!
 		Click on the link to verify your account at Samaa.
-		Link: https://samavibes.vercel.app/users/${newUser.id}/verify/${vrefToken.token}`;
+		
+		Link: https://samavibes.vercel.app/users/${newUser.id}/verify/${vrefToken.token}
+		
+		Visit my Portfolio at: https://manishraj.me`;
 		await sendEmail(newUser.email, "Verify your account", url);
 	
 		res 
