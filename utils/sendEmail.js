@@ -18,7 +18,7 @@ module.exports = async (email, subject, text) => {
             from: 'samaavibes@gmail.com',
             to: email,
             subject: subject,
-            text: text
+            html: htmlContent
         };
 
         await transporter.sendMail(mailOptions);
