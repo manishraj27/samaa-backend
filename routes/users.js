@@ -97,7 +97,7 @@ router.post("/", async (req, res) => {
         <body>
             <div class="container">
                 <div class="header">
-                    <img src="https://via.placeholder.com/100" alt="Samaa Music Platform">
+                    <img src="https://drive.google.com/uc?export=view&id=1Ysh3JAGxGF5w5aYM6yp47l57TcpmXxCK" alt="Samaa Music Platform">
                 </div>
                 <div class="content">
                     <h1>Hey ${newUser.name}!</h1>

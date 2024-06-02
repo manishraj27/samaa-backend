@@ -1,21 +1,21 @@
 const nodemailer = require('nodemailer');
-
+dotenv = require("dotenv").config();
 
 module.exports = async (email, subject, htmlContent) => {
     try {
         const transporter = nodemailer.createTransport({
             host: 'smtp.gmail.com',
             service: 'gmail',
-            port: 587,
+            port: process.env.EMAIL_PORT,
             secure: false,
             auth: {
-                user: 'samaavibes@gmail.com',
-                pass: 'aqfn syja obna qnhx',
+                user: process.env.ADMIN_EMAIL,
+                pass: process.env.ADMIN_PASSWORD,
             }
         });
 
         const mailOptions = {
-            from: 'samaavibes@gmail.com',
+            from: process.env.ADMIN_EMAIL,
             to: email,
             subject: subject,
             html: htmlContent
